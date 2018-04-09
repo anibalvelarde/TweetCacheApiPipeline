@@ -4,14 +4,14 @@ phases:
     commands:
       - echo Restore started on `date`
       - pip install --upgrade awscli
-      - dotnet restore AspNetCoreWebService/AspNetCoreWebService.csproj
-      - dotnet restore AspNetCoreWebServiceTest/AspNetCoreWebServiceTest.csproj
+      - dotnet restore TweetCacheApi/TweetCacheApi.csproj
+      - dotnet restore TweetCacheApiTest/TweetCacheApiTest.csproj
   build:
     commands:
       - echo Build started on `date`
-      - dotnet publish -c release -o ./build_output AspNetCoreWebService/AspNetCoreWebService.csproj
-      - dotnet publish -c release -o ./test_output AspNetCoreWebServiceTest/AspNetCoreWebServiceTest.csproj
-      - dotnet vstest AspNetCoreWebServiceTest/test_output/AspNetCoreWebServiceTest.dll
+      - dotnet publish -c release -o ./build_output TweetCacheApi/TweetCacheApi.csproj
+      - dotnet publish -c release -o ./test_output TweetCacheApiTest/TweetCacheApiTest.csproj
+      - dotnet vstest TweetCacheApiTest/test_output/TweetCacheApiTest.dll
 artifacts:
   files:
     - AspNetCoreWebService/build_output/**/*
