@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+      - pip install --upgrade awscli
+      - dotnet restore AspNetCoreWebService/AspNetCoreWebService.csproj
+      - dotnet restore AspNetCoreWebServiceTest/AspNetCoreWebServiceTest.csproj
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet publish -c release -o ./build_output AspNetCoreWebService/AspNetCoreWebService.csproj
+      - dotnet publish -c release -o ./test_output AspNetCoreWebServiceTest/AspNetCoreWebServiceTest.csproj
+      - dotnet vstest AspNetCoreWebServiceTest/test_output/AspNetCoreWebServiceTest.dll
+artifacts:
+  files:
+    - AspNetCoreWebService/build_output/**/*
+    - scripts/**/*
+    - appspec.yml
