@@ -14,6 +14,6 @@ phases:
       - dotnet vstest TweetCacheApiTest/test_output/TweetCacheApiTest.dll
 artifacts:
   files:
-    - AspNetCoreWebService/build_output/**/*
+    - TweetCacheApi/build_output/**/*
     - scripts/**/*
     - appspec.yml
